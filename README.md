@@ -9,3 +9,5 @@ A web app to Order Pizzas!!
 3. Redux
 
 # Detailed Information can be found here
+
+[Link to Detailed Overview](./Page%201%209def417548314cc7bfb394c29ffbcfcc.md)
