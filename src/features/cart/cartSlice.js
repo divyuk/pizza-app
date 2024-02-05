@@ -60,3 +60,5 @@ export const getTotalCartPrice = (state) =>
     (sum, item) => sum + item.quantity * item.totalPrice,
     0,
   );
+
+export const getCart = (state) => state.cart.cart;
