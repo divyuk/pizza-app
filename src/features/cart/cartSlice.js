@@ -1,5 +1,4 @@
-const { createSlice } = require('@reduxjs/toolkit');
-
+import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   cart: [],
   /**
