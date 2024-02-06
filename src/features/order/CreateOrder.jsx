@@ -1,12 +1,13 @@
 import { createOrder } from '../../services/apiRestaurant';
 import { Form, redirect, useActionData, useNavigation } from 'react-router-dom';
 import Button from '../../ui/Button';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { clearCart, getCart, getTotalCartPrice } from '../cart/cartSlice';
 import EmptyCart from '../cart/EmptyCart';
 import store from '../../store';
 import { formatCurrency } from '../../utils/helpers';
 import { useState } from 'react';
+import { fetchAddress } from '../user/userSlice';
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
@@ -15,7 +16,7 @@ const isValidPhone = (str) =>
 
 function CreateOrder() {
   const [withPriority, setWithPriority] = useState(false);
-
+  const dispatch = useDispatch();
   const username = useSelector((state) => state.user.username);
   const cart = useSelector(getCart);
   const navigation = useNavigation();
@@ -32,7 +33,7 @@ function CreateOrder() {
       <h2 className="mb-8 text-xl font-semibold">
         Ready to order? Let &apos;s go!
       </h2>
-
+      <button onClick={() => dispatch(fetchAddress())}> Get Position</button>
       {/* <Form method="POST" action="/order/new"> */}
       {/* This will auto point to nearest route */}
       <Form method="POST">
